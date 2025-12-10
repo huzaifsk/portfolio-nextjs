@@ -11,7 +11,7 @@ export const personalData = {
   bio: [
     "I am a Frontend Software Engineer based in Mumbai, India, dedicated to crafting clean, scalable, and highly optimized user experiences. With over three years of experience, my core expertise lies in the entire modern stack: React.js, Next.js, and TypeScript, backed by Node.js/Express.js and MongoDB for full-stack capability.",
     "My focus is on delivering measurable business impact. In recent roles, I led mobile-first architectural designs that resulted in a 60% mobile traffic increase and a 35% bounce rate reduction. I routinely work to demanding performance standards, optimizing components using lazy loading and code splitting to consistently hit 90+ Lighthouse scores.",
-    "I actively contribute to the community, most notably by architecting and publishing Dextor Components, an open-source React UI library with live documentation that achieved 100+ downloads."
+    "I actively contribute to the community, most notably by architecting and publishing Dextor Components, an open-source React UI library with live documentation that achieved 200+ downloads."
   ],
   
   social: {
