@@ -1,0 +1,100 @@
+---
+title: "The Art of Micro-interactions"
+date: "2024-09-22"
+excerpt: "How subtle animations and interactions can significantly improve user experience without overwhelming users."
+tags: ["Animation", "UX", "Framer Motion"]
+---
+
+# The Art of Micro-interactions
+
+Micro-interactions are the small, subtle animations that guide users through an interface. When done right, they're invisible. When done wrong, they're annoying. Here's what I've learned about crafting delightful micro-interactions.
+
+## Less is More
+
+The best micro-interactions are barely noticeable. They should feel natural, not flashy. A button that gently scales on hover, a smooth transition between states—these small details add up to create a polished experience.
+
+## Timing Matters
+
+Animation timing can make or break an interaction:
+
+\`\`\`tsx
+// Too fast (feels jarring)
+transition={{ duration: 0.1 }}
+
+// Just right
+transition={{ duration: 0.2, ease: "easeOut" }}
+
+// Too slow (feels sluggish)
+transition={{ duration: 0.8 }}
+\`\`\`
+
+For most interactions, 200-300ms feels natural.
+
+## Provide Feedback
+
+Every user action should have a response. Clicked a button? Show a subtle press effect. Hovering over a link? Change the color. Submitting a form? Show a loading state.
+
+\`\`\`tsx
+<motion.button
+  whileHover={{ scale: 1.02 }}
+  whileTap={{ scale: 0.98 }}
+  transition={{ duration: 0.2 }}
+>
+  Click me
+</motion.button>
+\`\`\`
+
+## Respect Reduced Motion
+
+Always respect users' motion preferences:
+
+\`\`\`tsx
+const prefersReducedMotion = window.matchMedia(
+  '(prefers-reduced-motion: reduce)'
+).matches;
+
+const transition = prefersReducedMotion 
+  ? { duration: 0 }
+  : { duration: 0.3 };
+\`\`\`
+
+## Common Patterns
+
+### Page Transitions
+Fade content in when it enters the viewport:
+
+\`\`\`tsx
+<motion.div
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.5 }}
+>
+  Content
+</motion.div>
+\`\`\`
+
+### Hover Effects
+Subtle scale and shadow changes:
+
+\`\`\`tsx
+<motion.div
+  whileHover={{ 
+    scale: 1.05, 
+    boxShadow: "0 4px 20px rgba(0,0,0,0.1)" 
+  }}
+>
+  Card
+</motion.div>
+\`\`\`
+
+### Loading States
+Use skeleton screens instead of spinners when possible. They feel faster.
+
+## Testing Interactions
+
+1. Use them yourself for a week
+2. Watch real users interact with them
+3. A/B test when possible
+4. Measure completion rates
+
+Remember: The goal of micro-interactions is to guide and delight users, not to show off your animation skills.

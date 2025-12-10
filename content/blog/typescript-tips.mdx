@@ -1,0 +1,149 @@
+---
+title: "TypeScript Tips for React Developers"
+date: "2024-08-10"
+excerpt: "Advanced TypeScript patterns that make your React code more type-safe and maintainable."
+tags: ["TypeScript", "React", "Best Practices"]
+---
+
+# TypeScript Tips for React Developers
+
+After years of writing TypeScript in React applications, I've collected patterns that make code more type-safe and easier to maintain.
+
+## 1. Use Discriminated Unions for State
+
+Instead of optional fields, use discriminated unions:
+
+\`\`\`tsx
+// ❌ Hard to know what's valid
+type State = {
+  status: 'idle' | 'loading' | 'success' | 'error';
+  data?: User;
+  error?: Error;
+};
+
+// ✅ Impossible states are impossible
+type State =
+  | { status: 'idle' }
+  | { status: 'loading' }
+  | { status: 'success'; data: User }
+  | { status: 'error'; error: Error };
+\`\`\`
+
+Now TypeScript knows exactly what fields are available in each state.
+
+## 2. Extract Props with ComponentProps
+
+Need to extend existing component props?
+
+\`\`\`tsx
+import { ComponentProps } from 'react';
+
+type ButtonProps = ComponentProps<'button'> & {
+  variant?: 'primary' | 'secondary';
+};
+
+function Button({ variant = 'primary', ...props }: ButtonProps) {
+  return <button {...props} />;
+}
+\`\`\`
+
+## 3. Type-Safe Event Handlers
+
+Use React's built-in event types:
+
+\`\`\`tsx
+function Form() {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    // TypeScript knows e.currentTarget is an HTMLFormElement
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // TypeScript knows e.target is an HTMLInputElement
+    console.log(e.target.value);
+  };
+
+  return <form onSubmit={handleSubmit}>...</form>;
+}
+\`\`\`
+
+## 4. Generic Components
+
+Make reusable components type-safe:
+
+\`\`\`tsx
+interface SelectProps<T> {
+  options: T[];
+  value: T;
+  onChange: (value: T) => void;
+  getLabel: (option: T) => string;
+}
+
+function Select<T>({ options, value, onChange, getLabel }: SelectProps<T>) {
+  return (
+    <select
+      value={getLabel(value)}
+      onChange={(e) => {
+        const option = options.find(
+          (o) => getLabel(o) === e.target.value
+        );
+        if (option) onChange(option);
+      }}
+    >
+      {options.map((option) => (
+        <option key={getLabel(option)} value={getLabel(option)}>
+          {getLabel(option)}
+        </option>
+      ))}
+    </select>
+  );
+}
+\`\`\`
+
+## 5. Const Assertions
+
+Use `as const` for literal types:
+
+\`\`\`tsx
+const VARIANTS = ['primary', 'secondary', 'danger'] as const;
+type Variant = typeof VARIANTS[number]; // 'primary' | 'secondary' | 'danger'
+\`\`\`
+
+## 6. Utility Types
+
+Master these built-in utilities:
+
+\`\`\`tsx
+// Pick specific props
+type UserName = Pick<User, 'firstName' | 'lastName'>;
+
+// Make all props optional
+type PartialUser = Partial<User>;
+
+// Make all props required
+type RequiredUser = Required<User>;
+
+// Omit specific props
+type UserWithoutPassword = Omit<User, 'password'>;
+\`\`\`
+
+## 7. Type Guards
+
+Create custom type guards:
+
+\`\`\`tsx
+function isError(value: unknown): value is Error {
+  return value instanceof Error;
+}
+
+try {
+  // ...
+} catch (error) {
+  if (isError(error)) {
+    // TypeScript knows error is an Error
+    console.log(error.message);
+  }
+}
+\`\`\`
+
+These patterns have saved me countless hours of debugging and made my code more maintainable. Start incorporating them into your React projects today.

@@ -1,0 +1,66 @@
+---
+title: "Building Design Systems that Scale"
+date: "2024-10-15"
+excerpt: "Lessons learned from architecting a design system used by 12+ product teams and 500K+ daily users."
+tags: ["Design Systems", "React", "TypeScript"]
+---
+
+# Building Design Systems that Scale
+
+Design systems are more than just a collection of components—they're the foundation that enables teams to move fast while maintaining consistency. Over the past two years, I've learned valuable lessons building and maintaining a design system at scale.
+
+## Start with Principles, Not Components
+
+Before writing a single line of code, we established core design principles:
+
+- **Consistency**: Every component should feel part of the same family
+- **Accessibility**: WCAG AA compliance is non-negotiable
+- **Performance**: Components should render in under 16ms
+- **Developer Experience**: Simple APIs that make the right thing easy
+
+## Build for Composition
+
+The best components are composable. Instead of creating a massive `Modal` component with 20 props, we built primitives:
+
+\`\`\`tsx
+<Dialog.Root>
+  <Dialog.Trigger>Open</Dialog.Trigger>
+  <Dialog.Content>
+    <Dialog.Header>
+      <Dialog.Title>Title</Dialog.Title>
+    </Dialog.Header>
+    <Dialog.Body>Content here</Dialog.Body>
+  </Dialog.Content>
+</Dialog.Root>
+\`\`\`
+
+This approach gives developers flexibility while maintaining consistency.
+
+## Document Everything
+
+Great documentation is the difference between a design system that's adopted and one that's ignored. We document:
+
+- When to use each component
+- Accessibility considerations
+- Real-world examples
+- Common patterns and anti-patterns
+
+## Measure Adoption
+
+We track:
+- Component usage across products
+- Performance metrics
+- Accessibility scores
+- Developer satisfaction
+
+This data guides our roadmap and helps us prioritize improvements.
+
+## Key Takeaways
+
+1. Start small and iterate based on real needs
+2. Invest heavily in documentation
+3. Make accessibility the default
+4. Build for composition over configuration
+5. Measure everything
+
+Building a design system is a marathon, not a sprint. Start with the basics, gather feedback, and evolve based on real team needs.
