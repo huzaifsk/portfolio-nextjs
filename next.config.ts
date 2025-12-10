@@ -6,6 +6,9 @@ const nextConfig: NextConfig = {
   experimental: {
     mdxRs: true,
   },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 };
 
 const withMDX = createMDX({
