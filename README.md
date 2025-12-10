@@ -1,6 +1,6 @@
-# Portfolio Website
+# Huzaif Shaikh - Portfolio Website
 
-A modern, responsive portfolio website built with Next.js, TypeScript, and Tailwind CSS. Inspired by [chanhdai.com](https://chanhdai.com), featuring a clean design with dark mode support and smooth animations.
+A modern, responsive portfolio website showcasing the work and experience of **Huzaif Shaikh**, Frontend Software Engineer. Built with Next.js, TypeScript, and Tailwind CSS, featuring a clean design with dark mode support and smooth animations.
 
 ## ✨ Features
 
@@ -45,10 +45,11 @@ Edit `/data/personal.ts` to update your personal information:
 
 ```typescript
 export const personalData = {
-  name: "Your Name",
-  role: "Design Engineer",
-  tagline: "Your tagline here",
-  email: "your@email.com",
+  name: "Huzaif Shaikh",
+  role: "Frontend Software Engineer",
+  tagline: "Hi, I'm Huzaif 👋",
+  email: "huzaifsk12@gmail.com",
+  location: "Mumbai, India",
   // ... more fields
 };
 ```
@@ -145,6 +146,14 @@ MIT License - feel free to use this template for your own portfolio!
 
 Design inspiration from [Chánh Đại's portfolio](https://chanhdai.com)
 
+## 📞 Connect
+
+- **Portfolio**: [huzaif-shaikh-portfolio.vercel.app](https://huzaif-shaikh-portfolio.vercel.app/)
+- **GitHub**: [@huzaifsk](https://github.com/huzaifsk)
+- **LinkedIn**: [Huzaif Shaikh](https://www.linkedin.com/in/huzaif-shaikh/)
+- **X (Twitter)**: [@Huzaif__Shaikh](https://x.com/Huzaif__Shaikh)
+- **Email**: [huzaifsk12@gmail.com](mailto:huzaifsk12@gmail.com)
+
 ---
 
-**Built with ❤️ using Next.js and TypeScript**
+**Built with ❤️ by Huzaif Shaikh using Next.js and TypeScript**
