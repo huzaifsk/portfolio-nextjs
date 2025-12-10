@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { experiences } from "@/data/experience";
 import { Badge } from "@/components/ui/badge";
 import { TimelineCard } from "@/components/ui/animated-card";
@@ -44,10 +45,13 @@ export function ExperienceTimeline() {
                 {/* Company Logo */}
                 <div className="flex-shrink-0 mt-1">
                   <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden shadow-lg border-2 border-white dark:border-gray-900">
-                    <img 
+                    <Image 
                       src={getCompanyLogo(experience.company)}
                       alt={`${experience.company} logo`}
+                      width={48}
+                      height={48}
                       className="w-full h-full object-cover"
+                      loading="lazy"
                     />
                   </div>
                 </div>

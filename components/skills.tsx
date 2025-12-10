@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 const skillsWithIcons = [
@@ -53,35 +54,50 @@ export function Skills() {
                     <div className="flex flex-col items-center justify-center p-3 rounded-lg bg-white dark:bg-gray-900/30">
                       {skill.name === "Express.js" ? (
                         <>
-                          <img 
+                          <Image 
                             src="/expressjs.svg"
                             alt={skill.name}
+                            width={32}
+                            height={32}
                             className="w-6 h-6 sm:w-8 sm:h-8 object-contain dark:hidden"
+                            loading="lazy"
                           />
-                          <img 
+                          <Image 
                             src="/expressjs_dark.svg"
                             alt={skill.name}
+                            width={32}
+                            height={32}
                             className="w-6 h-6 sm:w-8 sm:h-8 object-contain hidden dark:block"
+                            loading="lazy"
                           />
                         </>
                       ) : skill.name === "Vercel" ? (
                         <>
-                          <img 
+                          <Image 
                             src="/vercel.svg"
                             alt={skill.name}
+                            width={32}
+                            height={32}
                             className="w-6 h-6 sm:w-8 sm:h-8 object-contain dark:hidden"
+                            loading="lazy"
                           />
-                          <img 
+                          <Image 
                             src="/vercel_dark.svg"
                             alt={skill.name}
+                            width={32}
+                            height={32}
                             className="w-6 h-6 sm:w-8 sm:h-8 object-contain hidden dark:block"
+                            loading="lazy"
                           />
                         </>
                       ) : (
-                        <img 
+                        <Image 
                           src={skill.icon} 
                           alt={skill.name}
+                          width={32}
+                          height={32}
                           className="w-6 h-6 sm:w-8 sm:h-8 object-contain"
+                          loading="lazy"
                         />
                       )}
                     </div>

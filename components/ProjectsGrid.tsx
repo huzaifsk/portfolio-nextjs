@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ExternalLink, Globe } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { projects } from "@/data/projects";
 
 export function ProjectsGrid() {
@@ -19,8 +20,8 @@ export function ProjectsGrid() {
           <h2 className="text-subheading text-black dark:text-white">
             Check out my latest work
           </h2>
-          <p className="text-normal text-gray-600 dark:text-gray-400">
-            I've worked on a variety of projects, from simple websites to complex web applications. Here are a few of my favorites.
+          <p className="text-normal text-gray-600 dark:text-gray-400 max-w-2xl">
+            Explore my portfolio of frontend solutions that showcase modern web development practices and user-centered design.
           </p>
         </div>
 

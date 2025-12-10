@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { education } from "@/data/education";
 import { TimelineCard } from "@/components/ui/animated-card";
 
@@ -42,10 +43,13 @@ export function Education() {
                 {/* Education Logo */}
                 <div className="flex-shrink-0">
                   <div className="w-12 h-12 rounded-full overflow-hidden shadow-lg border-2 border-white dark:border-gray-900 bg-gray-100 dark:bg-gray-800">
-                    <img 
+                    <Image 
                       src={getEducationLogo(edu.institution)}
                       alt={`${edu.institution} logo`}
+                      width={48}
+                      height={48}
                       className="w-full h-full object-cover"
+                      loading="lazy"
                     />
                   </div>
                 </div>

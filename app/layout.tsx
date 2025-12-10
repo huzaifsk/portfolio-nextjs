@@ -4,19 +4,27 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { DockNavigation } from "@/components/dock-navigation";
 import { DownloadResumeButton } from "@/components/download-resume-button";
+import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   weight: ["400"],
+  display: "swap",
+  preload: true,
 });
 
 export const metadata: Metadata = {
-  title: "Huzaif Shaikh - Frontend Developer & UI/UX Designer",
-  description: "Passionate Frontend Developer and UI/UX Designer based in Mumbai, India. Specializing in React.js, JavaScript, and modern web design.",
+  title: "Huzaif Shaikh - Frontend Engineer",
+  description: "Passionate Frontend Engineer based in Mumbai, India. Specializing in React.js, JavaScript, and modern web design.",
   keywords: ["frontend developer", "ui ux designer", "react", "javascript", "web design", "figma", "html css", "mumbai"],
   authors: [{ name: "Huzaif Shaikh" }],
   creator: "Huzaif Shaikh",
+  icons: {
+    icon: "/profile.png",
+    shortcut: "/profile.png",
+    apple: "/profile.png",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -40,6 +48,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="preload" href="/react_light.svg" as="image" />
+        <link rel="preload" href="/nextjs_icon_dark.svg" as="image" />
+        <link rel="preload" href="/typescript.svg" as="image" />
+        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
+      </head>
       <body className={`${inter.variable} antialiased bg-white dark:bg-black text-black dark:text-white`}>
         <ThemeProvider
           attribute="class"
@@ -51,6 +66,7 @@ export default function RootLayout({
           <DockNavigation />
           <DownloadResumeButton />
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
