@@ -1,6 +1,6 @@
 "use client";
 
-import { Home, Moon, Sun, ExternalLink } from "lucide-react";
+import { Home, Moon, Sun, ExternalLink, Download } from "lucide-react";
 import Link from "next/link";
 import { Dock, DockIcon } from "@/components/ui/dock";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
@@ -51,6 +51,7 @@ export function DockNavigation() {
 
   const navigationItems = [
     { icon: Home, href: "#home", label: "Home" },
+    { icon: Download, href: "/Huzaif_Shaikh_Resume_SP.pdf", label: "Download Resume", external: true },
   ];
 
   const socialItems = [
@@ -71,6 +72,8 @@ export function DockNavigation() {
                 <TooltipTrigger asChild>
                   <Link
                     href={item.href}
+                    target={item.external ? "_blank" : undefined}
+                    rel={item.external ? "noopener noreferrer" : undefined}
                     aria-label={item.label}
                     className={cn(
                       buttonVariants({ variant: "ghost", size: "icon" }),

@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { DockNavigation } from "@/components/dock-navigation";
-import { DownloadResumeButton } from "@/components/download-resume-button";
 import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({
@@ -64,7 +63,6 @@ export default function RootLayout({
         >
           <main className="max-w-4xl mx-auto px-4 sm:px-8 md:px-12 lg:px-36 py-8 sm:py-12 pb-32 font-normal bg-white dark:bg-black">{children}</main>
           <DockNavigation />
-          <DownloadResumeButton />
         </ThemeProvider>
         <Analytics />
       </body>

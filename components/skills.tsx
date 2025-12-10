@@ -40,7 +40,7 @@ export function Skills() {
         </h2>
 
         <TooltipProvider>
-          <div className="grid grid-cols-3 gap-4 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8">
+          <div className="grid grid-cols-4 gap-3 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10">
             {skillsWithIcons.map((skill, index) => (
               <motion.div
                 key={skill.name}
@@ -51,7 +51,7 @@ export function Skills() {
               >
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <div className="flex flex-col items-center justify-center p-3 rounded-lg bg-white dark:bg-gray-900/30">
+                    <div className="flex flex-col items-center justify-center p-2 sm:p-3 rounded-lg bg-white dark:bg-gray-900/30 border border-gray-100 dark:border-gray-800 sm:border-transparent sm:dark:border-transparent aspect-square min-h-[3rem] sm:min-h-[3.5rem]">
                       {skill.name === "Express.js" ? (
                         <>
                           <Image 
