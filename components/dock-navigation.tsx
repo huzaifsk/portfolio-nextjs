@@ -10,6 +10,8 @@ import { cn } from "@/lib/utils";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { personalData } from "@/data/personal";
+import { useLoading } from "@/components/LoadingContext";
+import { motion, AnimatePresence } from "framer-motion";
 
 const XformerlyTwitter = (props) => (
   <svg {...props} fill="none" viewBox="0 0 1200 1227">
@@ -44,6 +46,7 @@ const LinkedIn = (props) => (
 export function DockNavigation() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const { isAppLoading } = useLoading();
 
   useEffect(() => {
     setMounted(true);
@@ -62,9 +65,21 @@ export function DockNavigation() {
   ];
 
   return (
-    <TooltipProvider>
-      <div className="pointer-events-none fixed inset-x-0 bottom-0 z-50 mx-auto mb-3 sm:mb-4 flex origin-bottom justify-center px-4">
-        <Dock direction="middle" className="z-50 pointer-events-auto">
+    <AnimatePresence mode="wait">
+      {!isAppLoading && (
+        <motion.div
+          initial={{ opacity: 0, y: 100, scale: 0.8 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: 100, scale: 0.8 }}
+          transition={{ 
+            duration: 0.6, 
+            ease: [0.4, 0, 0.2, 1],
+            delay: 0.2
+          }}
+        >
+          <TooltipProvider>
+            <div className="pointer-events-none fixed inset-x-0 bottom-0 z-50 mx-auto mb-3 sm:mb-4 flex origin-bottom justify-center px-4">
+              <Dock direction="middle" className="z-50 pointer-events-auto">
           {/* Navigation Items */}
           {navigationItems.map((item) => (
             <DockIcon key={item.label}>
@@ -141,8 +156,11 @@ export function DockNavigation() {
               </Tooltip>
             </DockIcon>
           ))}
-        </Dock>
-      </div>
-    </TooltipProvider>
+              </Dock>
+            </div>
+          </TooltipProvider>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }

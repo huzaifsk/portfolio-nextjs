@@ -47,7 +47,7 @@ export function Hero() {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+        transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
         className="space-y-6 sm:space-y-8"
       >
         {/* Greeting & Name */}
@@ -55,7 +55,7 @@ export function Hero() {
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
             className="text-heading text-black dark:text-white"
           >
             {personalData.tagline}
@@ -64,7 +64,7 @@ export function Hero() {
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
             className="text-subheading text-gray-600 dark:text-gray-400 max-w-4xl"
           >
             {personalData.valueStatement}

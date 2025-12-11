@@ -1,5 +1,10 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { Hero } from "@/components/hero";
+import { LoadingScreen } from "@/components/LoadingScreen";
+import { useLoading } from "@/components/LoadingContext";
 
 // Dynamic imports for better code splitting
 const Overview = dynamic(() => import("@/components/Overview").then(mod => ({ default: mod.Overview })), {
@@ -27,6 +32,16 @@ const Contact = dynamic(() => import("@/components/Contact").then(mod => ({ defa
 });
 
 export default function Home() {
+  const { isAppLoading, setIsAppLoading } = useLoading();
+
+  const handleLoadingComplete = () => {
+    setIsAppLoading(false);
+  };
+
+  if (isAppLoading) {
+    return <LoadingScreen onLoadingComplete={handleLoadingComplete} />;
+  }
+
   return (
     <>
       <Hero />
