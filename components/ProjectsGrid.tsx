@@ -17,7 +17,7 @@ export function ProjectsGrid() {
         className="space-y-6 sm:space-y-8 lg:space-y-10"
       >
         <div className="space-y-4">
-          <h2 className="text-subheading text-black dark:text-white">
+          <h2 className="text-subheading font-bold text-black dark:text-white">
             Check out my latest work
           </h2>
           <p className="text-normal text-gray-600 dark:text-gray-400 max-w-2xl">

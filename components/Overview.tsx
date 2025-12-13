@@ -9,11 +9,11 @@ export function Overview() {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.3 }}
-        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
         className="space-y-6 sm:space-y-8 lg:space-y-10"
       >
-        <h2 className="text-subheading font-medium text-black dark:text-white">
+        <h2 className="text-subheading font-bold text-black dark:text-white">
           About
         </h2>
 
@@ -23,8 +23,8 @@ export function Overview() {
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.5 + (index * 0.1) }}
-              viewport={{ once: true, margin: "-30px" }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
               className="text-normal text-gray-600 dark:text-gray-400 leading-relaxed"
             >
               {paragraph}

@@ -53,7 +53,7 @@ export function Contact() {
         viewport={{ once: true }}
         className="space-y-6 sm:space-y-8 lg:space-y-10"
       >
-        <h2 className="text-subheading font-medium text-black dark:text-white">
+        <h2 className="text-subheading font-bold text-black dark:text-white">
           Get in Touch
         </h2>
 

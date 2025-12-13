@@ -15,7 +15,7 @@ export function Awards() {
         viewport={{ once: true }}
         className="space-y-12"
       >
-        <h2 className="text-sm font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+        <h2 className="text-sm font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
           Awards & Recognition
         </h2>
 

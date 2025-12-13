@@ -27,7 +27,7 @@ export function ExperienceTimeline() {
         viewport={{ once: true }}
         className="space-y-6 sm:space-y-8 lg:space-y-10"
       >
-        <h2 className="text-subheading font-medium text-black dark:text-white">
+        <h2 className="text-subheading font-bold text-black dark:text-white">
           Work Experience
         </h2>
 
@@ -59,14 +59,14 @@ export function ExperienceTimeline() {
                 <div className="flex-1">
                   <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-3 gap-1 sm:gap-0">
                     <div className="flex-1">
-                      <h3 className="text-normal font-medium text-black dark:text-white">
+                      <h3 className="text-normal font-semibold text-black dark:text-white">
                         {experience.company}
                       </h3>
-                      <p className="text-sm sm:text-normal text-gray-600 dark:text-gray-400 mb-1 sm:mb-2">
+                      <p className="text-sm sm:text-normal font-semibold text-gray-600 dark:text-gray-400 mb-1 sm:mb-2">
                         {experience.role}
                       </p>
                     </div>
-                    <span className="text-xs sm:text-sm text-gray-500 dark:text-gray-500 self-start sm:self-auto">
+                    <span className="text-xs sm:text-sm  text-gray-500 dark:text-gray-500 self-start sm:self-auto">
                       {experience.period}
                     </span>
                   </div>

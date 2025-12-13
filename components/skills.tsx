@@ -36,8 +36,8 @@ export function Skills() {
         viewport={{ once: true }}
         className="space-y-6 sm:space-y-8"
       >
-        <h2 className="text-subheading font-medium text-black dark:text-white">
-          Skills & Technologies
+        <h2 className="text-subheading font-bold text-black dark:text-white">
+          Stack
         </h2>
 
         <TooltipProvider>

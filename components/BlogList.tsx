@@ -24,7 +24,7 @@ export function BlogList({ posts }: BlogListProps) {
         className="space-y-12"
       >
         <div className="flex items-center justify-between">
-          <h2 className="text-sm font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+          <h2 className="text-sm font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             Recent Posts
           </h2>
           <Link
