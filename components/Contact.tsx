@@ -90,7 +90,7 @@ export function Contact() {
           </div>
 
           <p className="text-normal text-zinc-500 dark:text-zinc-500">
-            Based in {personalData.location}
+          📍 {personalData.location}
           </p>
         </div>
       </motion.div>

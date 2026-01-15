@@ -51,7 +51,7 @@ export function DockNavigation() {
 
   const navigationItems = [
     { icon: Home, href: "#home", label: "Home" },
-    { icon: Download, href: "/Huzaif_Shaikh_Resume_SP.pdf", label: "Download Resume", external: true },
+    { icon: Download, href: "/Huzaif_Shaikh_Resume_sp.pdf", label: "Download Resume", external: true },
   ];
 
   const socialItems = [
