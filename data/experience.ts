@@ -12,6 +12,21 @@ export interface Experience {
 export const experiences: Experience[] = [
   {
     id: "1",
+    company: "Fable Fintech",
+    role: "React Developer",
+    period: "Jan 2025 - Present",
+    startDate: "2025-01",
+    endDate: null,
+    responsibilities: [
+      "Spearheading the migration of IndusInd Fast Remit (IFR) web application from legacy JSP architecture to modern React TypeScript, modernizing a critical financial remittance platform.",
+      "Architecting component-based UI structure by converting JSP servlets and scriptlets into reusable React components with TypeScript interfaces, improving code maintainability.",
+      "Integrating REST API architecture to replace direct database calls from JSP pages, establishing clear separation of concerns between frontend and backend layers",
+      "Building responsive, mobile-first UI with Tailwind, replacing legacy JSP-generated HTML tables and inline styles"
+    ],
+    technologies: ["React.js", "TypeScript", "JavaScript", "HTML5", "CSS3", "TailwindCSS", "REST APIs", "Git", "Redux Toolkit", "Ant Design", "Vite"]
+  },
+  {
+    id: "2",
     company: "Wolves & Company",
     role: "Software Engineer (Freelance)",
     period: "Apr 2024 - May 2025",
@@ -26,7 +41,7 @@ export const experiences: Experience[] = [
     technologies: ["React.js", "Next.js", "TypeScript", "JavaScript", "HTML5", "CSS3", "TailwindCSS", "SCSS", "Material UI", "Framer Motion"]
   },
   {
-    id: "2",
+    id: "3",
     company: "EdgeCRM",
     role: "Senior React Developer",
     period: "Dec 2023 - Mar 2024",
@@ -41,7 +56,7 @@ export const experiences: Experience[] = [
     technologies: ["React", "TypeScript", "Node.js", "MongoDB", "REST APIs", "Git", "Agile/Scrum"]
   },
   {
-    id: "2b",
+    id: "3b",
     company: "EdgeCRM",
     role: "Associate Software Engineer",
     period: "Jan 2023 - Dec 2023",
@@ -55,7 +70,7 @@ export const experiences: Experience[] = [
     technologies: ["React", "Node.js", "Express.js", "MongoDB", "bcrypt", "REST APIs", "Git"]
   },
   {
-    id: "3",
+    id: "4",
     company: "IlmTech Solutions",
     role: "Fullstack Engineer",
     period: "Jan 2022 - Nov 2022",

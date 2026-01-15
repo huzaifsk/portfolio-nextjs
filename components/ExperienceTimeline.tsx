@@ -3,12 +3,11 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { experiences } from "@/data/experience";
-import { Badge } from "@/components/ui/badge";
-import { TimelineCard } from "@/components/ui/animated-card";
 
 // Helper function to get company logo
 const getCompanyLogo = (company: string) => {
   const logoMap: { [key: string]: string } = {
+    'Fable Fintech': '/fable-logo.jpeg',
     'Wolves & Company': '/wolves.png',
     'EdgeCRM': '/edge.jpeg', 
     'IlmTech Solutions': '/ilmtec.png'
@@ -44,7 +43,7 @@ export function ExperienceTimeline() {
               <div className="flex items-start gap-3 sm:gap-4">
                 {/* Company Logo */}
                 <div className="flex-shrink-0 mt-1">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden shadow-lg border-2 border-white dark:border-gray-900">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden shadow-sm shadow-black/10 ring-1 ring-black/10 dark:ring-white/10 border-2 border-white dark:border-gray-900">
                     <Image 
                       src={getCompanyLogo(experience.company)}
                       alt={`${experience.company} logo`}
