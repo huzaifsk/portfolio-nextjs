@@ -21,6 +21,8 @@ const skillsWithIcons = [
   { name: "MongoDB", icon: "/mongodb-icon-dark.svg" },
   { name: "Framer Motion", icon: "/motion_dark.svg" },
   { name: "Git", icon: "/git.svg" },
+  { name: "GitHub", icon: "/github_light.svg" },
+  { name: "GitLab", icon: "/gitlab.svg" },
   { name: "NPM", icon: "/npm.svg" },
   { name: "Figma", icon: "/figma.svg" },
   { name: "Vercel", icon: "/vercel.svg" },
