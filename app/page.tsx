@@ -1,37 +1,64 @@
-"use client";
-
-import { useState, useEffect } from "react";
-import dynamic from "next/dynamic";
+import { Contact } from "@/components/Contact";
+import { Education } from "@/components/Education";
+import { ExperienceTimeline } from "@/components/ExperienceTimeline";
+import { Overview } from "@/components/Overview";
+import { ProjectsGrid } from "@/components/ProjectsGrid";
+import { Skills } from "@/components/skills";
 import { Hero } from "@/components/hero";
-
-// Dynamic imports for better code splitting
-const Overview = dynamic(() => import("@/components/Overview").then(mod => ({ default: mod.Overview })), {
-  loading: () => <div className="h-32 animate-pulse bg-gray-100 dark:bg-gray-900 rounded-lg" />
-});
-
-const Skills = dynamic(() => import("@/components/skills").then(mod => ({ default: mod.Skills })), {
-  loading: () => <div className="h-32 animate-pulse bg-gray-100 dark:bg-gray-900 rounded-lg" />
-});
-
-const ExperienceTimeline = dynamic(() => import("@/components/ExperienceTimeline").then(mod => ({ default: mod.ExperienceTimeline })), {
-  loading: () => <div className="h-48 animate-pulse bg-gray-100 dark:bg-gray-900 rounded-lg" />
-});
-
-const Education = dynamic(() => import("@/components/Education").then(mod => ({ default: mod.Education })), {
-  loading: () => <div className="h-32 animate-pulse bg-gray-100 dark:bg-gray-900 rounded-lg" />
-});
-
-const ProjectsGrid = dynamic(() => import("@/components/ProjectsGrid").then(mod => ({ default: mod.ProjectsGrid })), {
-  loading: () => <div className="h-48 animate-pulse bg-gray-100 dark:bg-gray-900 rounded-lg" />
-});
-
-const Contact = dynamic(() => import("@/components/Contact").then(mod => ({ default: mod.Contact })), {
-  loading: () => <div className="h-32 animate-pulse bg-gray-100 dark:bg-gray-900 rounded-lg" />
-});
+import { personalData } from "@/data/personal";
+import { projects } from "@/data/projects";
+import { siteConfig } from "@/data/site";
 
 export default function Home() {
+  const personJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: personalData.name,
+    jobTitle: personalData.role,
+    description: siteConfig.description,
+    email: personalData.email,
+    telephone: personalData.phone,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Mumbai",
+      addressCountry: "IN",
+    },
+    url: siteConfig.url,
+    sameAs: [
+      personalData.social.github,
+      personalData.social.linkedin,
+      personalData.social.twitter,
+    ],
+  };
+
+  const websiteJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: siteConfig.name,
+    url: siteConfig.url,
+    description: siteConfig.description,
+  };
+
+  const itemListJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: projects.map((project, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: project.title,
+      url: project.link ?? project.github ?? siteConfig.url,
+      description: project.summary,
+    })),
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([personJsonLd, websiteJsonLd, itemListJsonLd]),
+        }}
+      />
       <Hero />
       <Overview />
       <Skills />

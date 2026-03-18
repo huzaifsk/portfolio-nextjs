@@ -1,9 +1,6 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Image from "next/image";
 import { education } from "@/data/education";
-import { TimelineCard } from "@/components/ui/animated-card";
+import { Reveal } from "@/components/ui/reveal";
 
 // Helper function to get education logo
 const getEducationLogo = (institution: string) => {
@@ -18,27 +15,14 @@ const getEducationLogo = (institution: string) => {
 export function Education() {
   return (
     <section id="education" className="py-12 sm:py-14 lg:py-16">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-        className="space-y-6 sm:space-y-8 lg:space-y-10"
-      >
+      <Reveal className="space-y-6 sm:space-y-8 lg:space-y-10">
         <h2 className="text-subheading font-bold text-black dark:text-white">
           Education
         </h2>
 
         <div className="space-y-8">
           {education.map((edu, index) => (
-            <motion.div
-              key={edu.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="space-y-2"
-            >
+            <Reveal key={edu.id} delay={index * 0.08} className="space-y-2">
               <div className="flex items-start gap-4">
                 {/* Education Logo */}
                 <div className="flex-shrink-0">
@@ -70,10 +54,10 @@ export function Education() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </Reveal>
           ))}
         </div>
-      </motion.div>
+      </Reveal>
     </section>
   );
 }

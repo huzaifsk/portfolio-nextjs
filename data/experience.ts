@@ -5,6 +5,8 @@ export interface Experience {
   period: string;
   startDate: string;
   endDate: string | null;
+  summary: string;
+  impact: string;
   responsibilities: string[];
   technologies: string[];
 }
@@ -17,6 +19,8 @@ export const experiences: Experience[] = [
     period: "Jan 2025 - Present",
     startDate: "2025-01",
     endDate: null,
+    summary: "Modernizing a critical remittance platform from legacy JSP to a maintainable React and TypeScript architecture.",
+    impact: "Shifted a business-critical financial workflow toward a reusable frontend foundation with cleaner boundaries between UI and backend systems.",
     responsibilities: [
       "Spearheading the migration of IndusInd Fast Remit (IFR) web application from legacy JSP architecture to modern React TypeScript, modernizing a critical financial remittance platform.",
       "Architecting component-based UI structure by converting JSP servlets and scriptlets into reusable React components with TypeScript interfaces, improving code maintainability.",
@@ -32,6 +36,8 @@ export const experiences: Experience[] = [
     period: "Apr 2024 - May 2025",
     startDate: "2024-04",
     endDate: "2025-05",
+    summary: "Delivered performance-focused, mobile-first product work across client websites and internal tools.",
+    impact: "Improved traffic quality, load performance, and component reuse across multiple production projects.",
     responsibilities: [
       "Architected mobile-first designs for 15+ websites, achieving 60% mobile traffic increase and 35% bounce rate reduction",
       "Improved page load time from 4.2s to 1.8s through lazy loading and optimization, consistently achieving 90+ Lighthouse scores",
@@ -47,6 +53,8 @@ export const experiences: Experience[] = [
     period: "Dec 2023 - Mar 2024",
     startDate: "2023-12",
     endDate: "2024-03",
+    summary: "Led frontend delivery for a multilingual commerce experience and supporting operational dashboards.",
+    impact: "Improved completion rates, stability, and operational responsiveness for a daily-use platform.",
     responsibilities: [
       "Led development of a multilingual e-commerce portal using React and TypeScript, serving 5,000+ daily users with 99.9% uptime",
       "Designed and implemented an accessible enrollment flow for elderly users, improving completion rate from 45% to 78%",
@@ -62,6 +70,8 @@ export const experiences: Experience[] = [
     period: "Jan 2023 - Dec 2023",
     startDate: "2023-01",
     endDate: "2023-12",
+    summary: "Built core lifecycle and account-management workflows across a growing product surface.",
+    impact: "Reduced operational overhead and improved reliability for user management flows.",
     responsibilities: [
       "Built a user lifecycle management system that reduced manual management time by 40% and minimized process errors by 25%",
       "Optimized database queries, which reduced overall data retrieval time by 60% (from 5s to 2s)",
@@ -76,6 +86,8 @@ export const experiences: Experience[] = [
     period: "Jan 2022 - Nov 2022",
     startDate: "2022-01",
     endDate: "2022-11",
+    summary: "Shipped core authentication, performance, and error-handling improvements across full-stack applications.",
+    impact: "Raised product reliability while improving load speed and reducing support demand.",
     responsibilities: [
       "Developed a JWT authentication flow that reduced login errors by 30% and improved speed by 2 seconds",
       "Achieved 95+ Lighthouse scores across 5+ device breakpoints with a 40% faster mobile load time compared to the previous version",

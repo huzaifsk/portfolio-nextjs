@@ -1,8 +1,6 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Image from "next/image";
 import { experiences } from "@/data/experience";
+import { Reveal } from "@/components/ui/reveal";
 
 // Helper function to get company logo
 const getCompanyLogo = (company: string) => {
@@ -19,27 +17,14 @@ const getCompanyLogo = (company: string) => {
 export function ExperienceTimeline() {
   return (
     <section id="experience" className="py-12 sm:py-14 lg:py-16">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-        className="space-y-6 sm:space-y-8 lg:space-y-10"
-      >
+      <Reveal className="space-y-6 sm:space-y-8 lg:space-y-10">
         <h2 className="text-subheading font-bold text-black dark:text-white">
           Work Experience
         </h2>
 
         <div className="space-y-8 sm:space-y-10 lg:space-y-12">
           {experiences.map((experience, index) => (
-            <motion.div
-              key={experience.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="space-y-4"
-            >
+            <Reveal key={experience.id} delay={index * 0.08} className="space-y-4">
               <div className="flex items-start gap-3 sm:gap-4">
                 {/* Company Logo */}
                 <div className="flex-shrink-0 mt-1">
@@ -70,21 +55,41 @@ export function ExperienceTimeline() {
                     </span>
                   </div>
 
+                  <p className="mb-3 text-sm font-medium text-gray-800 dark:text-gray-200">
+                    {experience.summary}
+                  </p>
+
+                  <p className="mb-4 text-sm text-gray-700 dark:text-gray-300">
+                    <span className="font-semibold text-black dark:text-white">Impact:</span>{" "}
+                    {experience.impact}
+                  </p>
+
                   <div className="text-normal text-gray-600 dark:text-gray-400 leading-relaxed mb-4 space-y-2">
-                    {experience.responsibilities.slice(0, 2).map((responsibility, idx) => (
+                    {experience.responsibilities.slice(0, 3).map((responsibility, idx) => (
                       <p key={idx} className="text-sm">
                         • {responsibility}
                       </p>
                     ))}
                   </div>
 
+                  <div className="flex flex-wrap gap-1.5">
+                    {experience.technologies.slice(0, 6).map((tech) => (
+                      <span
+                        key={tech}
+                        className="rounded-md bg-gray-100 px-2 py-1 text-xs font-medium text-gray-700 dark:bg-gray-800 dark:text-gray-300"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
 
                 </div>
               </div>
-            </motion.div>
+            </Reveal>
           ))}
         </div>
-      </motion.div>
+      </Reveal>
     </section>
   );
 }
