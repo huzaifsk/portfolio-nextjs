@@ -35,18 +35,31 @@ export function DockNavigation() {
             <DockIcon key={item.label}>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Link
-                    href={item.href}
-                    target={item.external ? "_blank" : undefined}
-                    rel={item.external ? "noopener noreferrer" : undefined}
-                    aria-label={item.label}
-                    className={cn(
-                      buttonVariants({ variant: "ghost", size: "icon" }),
-                      "size-12 sm:size-12 rounded-full"
-                    )}
-                  >
-                    <item.icon className="size-4 sm:size-4" />
-                  </Link>
+                  {item.external ? (
+                    <a
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={item.label}
+                      className={cn(
+                        buttonVariants({ variant: "ghost", size: "icon" }),
+                        "size-12 sm:size-12 rounded-full"
+                      )}
+                    >
+                      <item.icon className="size-4 sm:size-4" />
+                    </a>
+                  ) : (
+                    <Link
+                      href={item.href}
+                      aria-label={item.label}
+                      className={cn(
+                        buttonVariants({ variant: "ghost", size: "icon" }),
+                        "size-12 sm:size-12 rounded-full"
+                      )}
+                    >
+                      <item.icon className="size-4 sm:size-4" />
+                    </Link>
+                  )}
                 </TooltipTrigger>
                 <TooltipContent>
                   <p>{item.label}</p>
