@@ -11,7 +11,7 @@ export function DownloadResumeButton() {
         <Tooltip>
           <TooltipTrigger asChild>
             <Link
-              href="/Huzaif_Shaikh_Resume_SP.pdf"
+              href="/Huzaif_Shaikh_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               download="Huzaif_Shaikh_Resume.pdf"

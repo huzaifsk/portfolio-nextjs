@@ -18,7 +18,7 @@ export function DockNavigation() {
 
   const navigationItems = [
     { icon: Home, href: "#home", label: "Home" },
-    { icon: Download, href: "/Huzaif_Shaikh_Resume_sp.pdf", label: "Download Resume", external: true },
+    { icon: Download, href: "/Huzaif_Shaikh_Resume.pdf", label: "Download Resume", external: true },
   ];
 
   const socialItems = [
@@ -46,7 +46,7 @@ export function DockNavigation() {
                         "size-12 sm:size-12 rounded-full"
                       )}
                     >
-                      <item.icon className="size-4 sm:size-4" />
+                      <item.icon className="size-[1.125rem] sm:size-4" />
                     </a>
                   ) : (
                     <Link
@@ -57,7 +57,7 @@ export function DockNavigation() {
                         "size-12 sm:size-12 rounded-full"
                       )}
                     >
-                      <item.icon className="size-4 sm:size-4" />
+                      <item.icon className="size-[1.125rem] sm:size-4" />
                     </Link>
                   )}
                 </TooltipTrigger>
@@ -82,7 +82,7 @@ export function DockNavigation() {
                     "size-12 sm:size-12 rounded-full"
                   )}
                 >
-                  {hydrated && resolvedTheme === "dark" ? <Sun className="size-4 sm:size-4" /> : <Moon className="size-4 sm:size-4" />}
+                  {hydrated && resolvedTheme === "dark" ? <Sun className="size-[1.125rem] sm:size-4" /> : <Moon className="size-[1.125rem] sm:size-4" />}
                 </button>
               </TooltipTrigger>
               <TooltipContent>
@@ -109,9 +109,9 @@ export function DockNavigation() {
                     )}
                   >
                     {"kind" in item ? (
-                      <SocialIcon kind={item.kind} className="size-4 sm:size-4" />
+                      <SocialIcon kind={item.kind} className="size-[1.125rem] sm:size-4" />
                     ) : (
-                      <item.icon className="size-4 sm:size-4" />
+                      <item.icon className="size-[1.125rem] sm:size-4" />
                     )}
                   </Link>
                 </TooltipTrigger>

@@ -16,6 +16,7 @@ export default function Home() {
     name: personalData.name,
     jobTitle: personalData.role,
     description: siteConfig.description,
+    image: `${siteConfig.url}/opengraph-image`,
     email: personalData.email,
     telephone: personalData.phone,
     address: {
@@ -24,6 +25,19 @@ export default function Home() {
       addressCountry: "IN",
     },
     url: siteConfig.url,
+    worksFor: {
+      "@type": "Organization",
+      name: "Metis Labs B.V.",
+    },
+    knowsAbout: [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Redux Toolkit",
+      "Node.js",
+      "Web Performance",
+      "Web Accessibility",
+    ],
     sameAs: [
       personalData.social.github,
       personalData.social.linkedin,

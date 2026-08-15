@@ -5,14 +5,13 @@ import { Button } from "@/components/ui/button";
 import { SocialIcon } from "@/components/social-icons";
 import { socialLinks } from "@/data/site";
 import { Reveal } from "@/components/ui/reveal";
+import { SectionHeading } from "@/components/ui/section-heading";
 
 export function Contact() {
   return (
     <section id="contact" className="py-12 sm:py-14 lg:py-16">
       <Reveal className="space-y-6 sm:space-y-8 lg:space-y-10">
-        <h2 className="text-subheading font-bold text-black dark:text-white">
-          Get in Touch
-        </h2>
+        <SectionHeading>Get in Touch</SectionHeading>
 
         <div className="space-y-8">
           <div className="space-y-4">

@@ -7,7 +7,6 @@ export const siteConfig = {
   description:
     "Frontend Software Engineer based in Mumbai, building high-performance React and Next.js products with strong UX, accessibility, and measurable business impact.",
   url: "https://huzaif-shaikh-portfolio.vercel.app",
-  ogImage: "/profile.png",
   keywords: [
     "Huzaif Shaikh",
     "frontend software engineer",
@@ -64,11 +63,13 @@ export const defaultMetadata: Metadata = {
   alternates: {
     canonical: "/",
   },
-  icons: {
-    icon: "/profile.png",
-    shortcut: "/profile.png",
-    apple: "/profile.png",
-  },
+  /*
+    No manual `icons` or image arrays here. app/icon.tsx and
+    app/opengraph-image.tsx are Next.js file-convention routes that generate
+    the favicon and the og:image/twitter:image tags (and their width, height,
+    and alt) automatically. Declaring them here too would have fought the file
+    convention with a stale reference to the old 588x586 profile photo.
+  */
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -76,20 +77,11 @@ export const defaultMetadata: Metadata = {
     title: siteConfig.title,
     description: siteConfig.description,
     siteName: siteConfig.name,
-    images: [
-      {
-        url: siteConfig.ogImage,
-        width: 1200,
-        height: 630,
-        alt: `${personalData.name} portfolio preview`,
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: siteConfig.title,
     description: siteConfig.description,
     creator: "@Huzaif__Shaikh",
-    images: [siteConfig.ogImage],
   },
 };

@@ -1,104 +1,152 @@
-import { ExternalLink, Globe } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { projects } from "@/data/projects";
 import { Reveal } from "@/components/ui/reveal";
+import { SectionHeading } from "@/components/ui/section-heading";
 
+/**
+ * Projects are laid out as full-width entries separated by a hairline rather
+ * than as bordered cards in a two-column grid.
+ *
+ * Two reasons: the screenshots are the strongest asset in this section and were
+ * being rendered at roughly half their available width, and the card chrome was
+ * communicating no hierarchy that spacing and a rule do not already communicate.
+ */
 export function ProjectsGrid() {
   return (
     <section id="projects" className="py-12 sm:py-14 lg:py-16">
-      <Reveal className="space-y-6 sm:space-y-8 lg:space-y-10">
-        <div className="space-y-4">
-          <h2 className="text-subheading font-bold text-black dark:text-white">
-            Check out my latest work
-          </h2>
-          <p className="text-normal text-gray-600 dark:text-gray-400 max-w-2xl">
-            Explore my portfolio of frontend solutions that showcase modern web development practices and user-centered design.
-          </p>
-        </div>
+      <Reveal className="space-y-8 sm:space-y-10 lg:space-y-12">
+        <SectionHeading>Selected work</SectionHeading>
 
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="space-y-14 sm:space-y-16 lg:space-y-20">
           {projects.map((project, index) => (
-            <Reveal key={project.id} delay={index * 0.08} className="group">
-              <div className="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900/50 overflow-hidden transition-all duration-200 hover:border-gray-300 dark:hover:border-gray-700 hover:shadow-lg">
-                <div className="aspect-video bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 flex items-center justify-center">
-                  {project.image ? (
-                    <Image
-                      src={project.image}
-                      alt={`${project.title} screenshot`}
-                      width={800}
-                      height={450}
-                      sizes="(min-width: 768px) 50vw, 100vw"
-                      className="w-full h-full object-cover"
-                      priority={index === 0}
-                    />
-                  ) : (
-                    <div className="text-gray-400 dark:text-gray-600 text-sm">
-                      Project Preview
-                    </div>
-                  )}
+            <Reveal
+              key={project.id}
+              delay={index * 0.08}
+              className={
+                index > 0
+                  ? "group border-t border-gray-200 pt-14 dark:border-gray-800 sm:pt-16 lg:pt-20"
+                  : "group"
+              }
+            >
+              <article className="space-y-6">
+                {/* Screenshot gets the full container width. */}
+                <Link
+                  href={project.link ?? project.github ?? "#"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Open ${project.title}`}
+                  className="block overflow-hidden rounded-xl ring-1 ring-gray-200 dark:ring-gray-800"
+                >
+                  <div className="aspect-[16/10] overflow-hidden bg-gray-50 dark:bg-gray-900">
+                    {project.image ? (
+                      <Image
+                        src={project.image}
+                        alt={`${project.title} interface`}
+                        width={1200}
+                        height={750}
+                        sizes="(min-width: 1024px) 60vw, 100vw"
+                        className="h-full w-full object-cover object-top transition-transform duration-500 ease-out will-change-transform group-hover:scale-[1.02] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+                        priority={index === 0}
+                      />
+                    ) : (
+                      <div className="flex h-full items-center justify-center text-sm text-gray-400 dark:text-gray-600">
+                        Preview coming soon
+                      </div>
+                    )}
+                  </div>
+                </Link>
+
+                {/* Title and year on one line, year as plain tabular meta. */}
+                <div className="flex items-baseline justify-between gap-4">
+                  <h3 className="text-lg font-semibold tracking-tight text-black dark:text-white">
+                    {project.title}
+                  </h3>
+                  <span className="shrink-0 text-sm tabular-nums text-gray-500 dark:text-gray-500">
+                    {project.year}
+                  </span>
                 </div>
 
-                <div className="p-6">
-                  <div className="mb-3 flex items-start justify-between gap-3">
-                    <div>
-                      <h3 className="text-lg font-semibold text-black dark:text-white">
-                        {project.title}
-                      </h3>
-                      <p className="mt-1 text-xs font-medium uppercase tracking-[0.18em] text-gray-500 dark:text-gray-500">
-                        {project.year}
-                      </p>
-                    </div>
-                  </div>
-
-                  <p className="text-sm font-medium text-gray-800 dark:text-gray-200 mb-2">
+                {/* Lead, then supporting body. Measure capped for readability. */}
+                <div className="max-w-[65ch] space-y-3">
+                  <p className="text-base font-medium leading-relaxed text-gray-800 dark:text-gray-200">
                     {project.summary}
                   </p>
-
-                  <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-3">
+                  <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
                     {project.description}
                   </p>
+                </div>
 
-                  <div className="mb-4 space-y-2">
-                    <p className="text-sm text-gray-700 dark:text-gray-300">
-                      <span className="font-semibold text-black dark:text-white">Role:</span>{" "}
+                {/*
+                  Impact is the line a hiring manager is scanning for, so it is
+                  pulled out against a rule instead of sitting inline as one more
+                  "Label: value" row.
+                */}
+                <p className="max-w-[65ch] border-l-2 border-gray-300 pl-4 text-sm leading-relaxed text-gray-700 dark:border-gray-700 dark:text-gray-300">
+                  {project.impact}
+                </p>
+
+                <div className="grid gap-6 sm:grid-cols-2">
+                  <div className="space-y-2">
+                    <h4 className="text-xs font-semibold text-black dark:text-white">
+                      Role
+                    </h4>
+                    <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
                       {project.role}
                     </p>
-                    <p className="text-sm text-gray-700 dark:text-gray-300">
-                      <span className="font-semibold text-black dark:text-white">Impact:</span>{" "}
-                      {project.impact}
-                    </p>
                   </div>
 
-                  <div className="mb-4 space-y-2">
-                    {project.highlights.map((highlight) => (
-                      <p key={highlight} className="text-sm text-gray-600 dark:text-gray-400">
-                        • {highlight}
-                      </p>
-                    ))}
+                  <div className="space-y-2">
+                    <h4 className="text-xs font-semibold text-black dark:text-white">
+                      Highlights
+                    </h4>
+                    {/* A real list, rather than bullet glyphs inside paragraphs. */}
+                    <ul className="space-y-1.5">
+                      {project.highlights.map((highlight) => (
+                        <li
+                          key={highlight}
+                          className="flex gap-2 text-sm leading-relaxed text-gray-600 dark:text-gray-400"
+                        >
+                          <span aria-hidden="true" className="select-none">
+                            &bull;
+                          </span>
+                          <span>{highlight}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
+                </div>
 
-                  <div className="flex flex-wrap gap-2 mb-4">
+                <div className="flex flex-wrap items-center gap-x-5 gap-y-3 pt-1">
+                  <ul className="flex flex-wrap gap-1.5">
                     {project.tags.map((tag) => (
-                      <span
+                      <li
                         key={tag}
-                        className="px-2 py-1 text-xs font-medium bg-gray-200 dark:bg-gray-700 text-black dark:text-gray-200 rounded-md"
+                        className="rounded-md bg-gray-100 px-2 py-1 text-xs font-medium text-gray-700 dark:bg-gray-800 dark:text-gray-300"
                       >
                         {tag}
-                      </span>
+                      </li>
                     ))}
-                  </div>
+                  </ul>
 
-                  <div className="flex gap-2">
+                  {/*
+                    One primary action plus a tertiary text link, rather than the
+                    filled-button / ghost-button pair repeated on every entry.
+                  */}
+                  <div className="ml-auto flex items-center gap-5">
                     {project.link && (
                       <Link
                         href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-black hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-200 text-white dark:text-black text-xs font-medium rounded-md transition-colors"
+                        className="group/link inline-flex items-center gap-1 text-sm font-medium text-black underline decoration-gray-300 underline-offset-4 transition-colors hover:decoration-black dark:text-white dark:decoration-gray-700 dark:hover:decoration-white"
                       >
-                        <Globe className="size-3" />
-                        Live Website
+                        Live site
+                        <ArrowUpRight
+                          aria-hidden="true"
+                          className="size-3.5 transition-transform duration-200 ease-out group-hover/link:-translate-y-px group-hover/link:translate-x-px motion-reduce:transition-none"
+                        />
                       </Link>
                     )}
                     {project.github && (
@@ -106,15 +154,14 @@ export function ProjectsGrid() {
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 text-xs font-medium rounded-md transition-colors"
+                        className="text-sm text-gray-500 transition-colors hover:text-black dark:text-gray-500 dark:hover:text-white"
                       >
-                        <ExternalLink className="size-3" />
-                        GitHub
+                        Source
                       </Link>
                     )}
                   </div>
                 </div>
-              </div>
+              </article>
             </Reveal>
           ))}
         </div>

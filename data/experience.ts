@@ -14,28 +14,29 @@ export interface Experience {
 export const experiences: Experience[] = [
   {
     id: "1",
-    company: "Fable Fintech",
-    role: "React Developer",
-    period: "Jan 2025 - Present",
-    startDate: "2025-01",
+    company: "Metis Labs B.V.",
+    role: "Frontend Engineer",
+    period: "Feb 2026 - Present",
+    startDate: "2026-02",
     endDate: null,
-    summary: "Modernizing a critical remittance platform from legacy JSP to a maintainable React and TypeScript architecture.",
-    impact: "Shifted a business-critical financial workflow toward a reusable frontend foundation with cleaner boundaries between UI and backend systems.",
+    summary: "Own architecture and implementation of BrandHub's order and production-order management module across the order-to-cash pipeline.",
+    impact: "Replaced ad hoc implementations with reusable component and localization patterns, keeping four portals consistent as the product scaled.",
     responsibilities: [
-      "Spearheading the migration of IndusInd Fast Remit (IFR) web application from legacy JSP architecture to modern React TypeScript, modernizing a critical financial remittance platform.",
-      "Architecting component-based UI structure by converting JSP servlets and scriptlets into reusable React components with TypeScript interfaces, improving code maintainability.",
-      "Integrating REST API architecture to replace direct database calls from JSP pages, establishing clear separation of concerns between frontend and backend layers",
-      "Building responsive, mobile-first UI with Tailwind, replacing legacy JSP-generated HTML tables and inline styles"
+      "Own architecture and implementation of BrandHub's order and production-order management module using React.js, TypeScript, Redux Toolkit, and Context API, driving order-line logic, delivery-preference and route-type rules, printproof status handling, and cancellation flows",
+      "Led the rebuild of the order header and seller/product info panels into a single reusable component pattern, adopted across consolidated-order modals and custom supplier-line scenarios",
+      "Designed the supplier portal's quantity-check and variance system from the ground up: a reusable modal abstraction generalizing four stage-transition flows, with live variance calculation, bulk-action tooling, and validated document upload, shipped behind a feature flag to de-risk a business-critical workflow",
+      "Set technical direction for the finance and invoicing UI, covering credit notes, Exact Online integration, and PDF/HTML document templates, plus the customer portal's settings and payments surfaces",
+      "Established reusable design-system patterns and an EN/NL/DE localization architecture, reducing duplication across four portals"
     ],
-    technologies: ["React.js", "TypeScript", "JavaScript", "HTML5", "CSS3", "TailwindCSS", "REST APIs", "Git", "Redux Toolkit", "Ant Design", "Vite"]
+    technologies: ["React.js", "TypeScript", "Redux Toolkit", "Context API", "REST APIs", "Localization (i18n)", "Feature Flags", "Git"]
   },
   {
     id: "2",
     company: "Wolves & Company",
     role: "Software Engineer (Freelance)",
-    period: "Apr 2024 - May 2025",
+    period: "Apr 2024 - Jan 2026",
     startDate: "2024-04",
-    endDate: "2025-05",
+    endDate: "2026-01",
     summary: "Delivered performance-focused, mobile-first product work across client websites and internal tools.",
     impact: "Improved traffic quality, load performance, and component reuse across multiple production projects.",
     responsibilities: [

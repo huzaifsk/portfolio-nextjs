@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { SectionHeading } from "@/components/ui/section-heading";
 
 const skillsWithIcons = [
   { name: "React.js", icon: "/react_light.svg" },
@@ -40,9 +41,7 @@ export function Skills() {
         viewport={{ once: true }}
         className="space-y-6 sm:space-y-8"
       >
-        <h2 className="text-subheading font-bold text-black dark:text-white">
-          Stack
-        </h2>
+        <SectionHeading>Stack</SectionHeading>
 
         <TooltipProvider>
           <div className="grid grid-cols-4 gap-3 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10">

@@ -28,8 +28,15 @@ const DEFAULT_MAGNIFICATION = 60
 const DEFAULT_DISTANCE = 140
 const DEFAULT_DISABLEMAGNIFICATION = false
 
+/*
+  Taller bar on mobile where hover magnification never fires, so the dock has
+  presence without it. The tighter mobile gap buys back the width that the
+  extra height costs: seven icons plus two separators previously measured
+  330px, which overflowed a 360px screen once the container's px-4 was taken
+  into account.
+*/
 const dockVariants = cva(
-  "mx-auto flex h-[52px] w-max items-center justify-center gap-1 rounded-full border border-gray-200/50 dark:border-gray-700 bg-white/80 dark:bg-black/80 backdrop-blur-xl p-2 shadow-md"
+  "mx-auto flex h-14 sm:h-[52px] w-max items-center justify-center gap-0.5 sm:gap-1 rounded-full border border-gray-200/50 dark:border-gray-700 bg-white/80 dark:bg-black/80 backdrop-blur-xl p-2 shadow-md"
 )
 
 const Dock = React.forwardRef<HTMLDivElement, DockProps>(
