@@ -4,6 +4,7 @@ import Image from "next/image";
 import { projects } from "@/data/projects";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { LiveDot } from "@/components/ui/live-dot";
 
 /**
  * Projects are laid out as full-width entries separated by a hairline rather
@@ -60,8 +61,9 @@ export function ProjectsGrid() {
 
                 {/* Title and year on one line, year as plain tabular meta. */}
                 <div className="flex items-baseline justify-between gap-4">
-                  <h3 className="text-lg font-semibold tracking-tight text-black dark:text-white">
+                  <h3 className="flex items-center gap-2 text-lg font-semibold tracking-tight text-black dark:text-white">
                     {project.title}
+                    {project.link && <LiveDot />}
                   </h3>
                   <span className="shrink-0 text-sm tabular-nums text-gray-500 dark:text-gray-500">
                     {project.year}
@@ -87,35 +89,24 @@ export function ProjectsGrid() {
                   {project.impact}
                 </p>
 
-                <div className="grid gap-6 sm:grid-cols-2">
-                  <div className="space-y-2">
-                    <h4 className="text-xs font-semibold text-black dark:text-white">
-                      Role
-                    </h4>
-                    <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-                      {project.role}
-                    </p>
-                  </div>
-
-                  <div className="space-y-2">
-                    <h4 className="text-xs font-semibold text-black dark:text-white">
-                      Highlights
-                    </h4>
-                    {/* A real list, rather than bullet glyphs inside paragraphs. */}
-                    <ul className="space-y-1.5">
-                      {project.highlights.map((highlight) => (
-                        <li
-                          key={highlight}
-                          className="flex gap-2 text-sm leading-relaxed text-gray-600 dark:text-gray-400"
-                        >
-                          <span aria-hidden="true" className="select-none">
-                            &bull;
-                          </span>
-                          <span>{highlight}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                <div className="space-y-2">
+                  <h4 className="text-xs font-semibold text-black dark:text-white">
+                    Highlights
+                  </h4>
+                  {/* A real list, rather than bullet glyphs inside paragraphs. */}
+                  <ul className="max-w-[65ch] space-y-1.5">
+                    {project.highlights.map((highlight) => (
+                      <li
+                        key={highlight}
+                        className="flex gap-2 text-sm leading-relaxed text-gray-600 dark:text-gray-400"
+                      >
+                        <span aria-hidden="true" className="select-none">
+                          &bull;
+                        </span>
+                        <span>{highlight}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
 
                 <div className="flex flex-wrap items-center gap-x-5 gap-y-3 pt-1">

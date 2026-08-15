@@ -14,11 +14,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <link rel="preload" href="/react_light.svg" as="image" />
-        <link rel="preload" href="/nextjs_icon_dark.svg" as="image" />
-        <link rel="preload" href="/typescript.svg" as="image" />
-      </head>
+      {/*
+        No manual preloads. These previously pointed at Skills-section icons
+        far below the fold, forcing the browser to spend early, high-priority
+        bandwidth on off-screen images instead of the font and JS the hero
+        actually needs first.
+      */}
       <body className={`${GeistSans.variable} antialiased bg-white dark:bg-black text-black dark:text-white`}>
         <ThemeProvider
           attribute="class"

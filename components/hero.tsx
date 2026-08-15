@@ -3,25 +3,28 @@ import Link from "next/link";
 import { personalData } from "@/data/personal";
 import { SocialIcon } from "@/components/social-icons";
 import { socialLinks } from "@/data/site";
-import { Reveal } from "@/components/ui/reveal";
 
+/**
+ * No entrance animation here on purpose. This is the first content on the
+ * page and the LCP element (the heading) - wrapping it in a motion Reveal
+ * meant it server-rendered at opacity:0 and stayed invisible until client JS
+ * downloaded, hydrated, and ran the fade-in. A "reveal" also has nothing to
+ * create hierarchy against on first paint, since it's the only thing on
+ * screen. Render it plainly instead, visible immediately, no JS dependency.
+ */
 export function Hero() {
   return (
     <section id="home" className="pt-12 sm:pt-16 pb-10 sm:pb-12">
-      <Reveal onView={false} className="space-y-6 sm:space-y-8">
+      <div className="space-y-6 sm:space-y-8">
         {/* Greeting & Name */}
         <div className="space-y-6">
-          <Reveal onView={false} delay={0.1}>
-            <h1 className="text-heading text-black dark:text-white">
-              {personalData.tagline}
-            </h1>
-          </Reveal>
-          
-          <Reveal onView={false} delay={0.2}>
-            <p className="text-subheading text-gray-600 dark:text-gray-400 max-w-4xl">
-              {personalData.valueStatement}
-            </p>
-          </Reveal>
+          <h1 className="text-heading text-black dark:text-white">
+            {personalData.tagline}
+          </h1>
+
+          <p className="text-subheading text-gray-600 dark:text-gray-400 max-w-4xl">
+            {personalData.valueStatement}
+          </p>
         </div>
 
         {/* Contact & Location Info */}
@@ -69,7 +72,7 @@ export function Hero() {
             </Link>
           ))}
         </div>
-      </Reveal>
+      </div>
     </section>
   );
 }

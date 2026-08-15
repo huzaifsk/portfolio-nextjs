@@ -5,6 +5,7 @@ import Image from "next/image";
 import { SeparatorHorizontal } from "lucide-react";
 import type { Experience } from "@/data/experience";
 import { Reveal } from "@/components/ui/reveal";
+import { LiveDot } from "@/components/ui/live-dot";
 
 type ExperienceItemProps = {
   experience: Experience;
@@ -71,8 +72,9 @@ export function ExperienceItem({
             </div>
 
             <div className="flex items-center justify-between gap-3 sm:flex-col sm:items-end sm:gap-1.5">
-              <span className="text-xs tabular-nums text-gray-500 dark:text-gray-500 sm:text-sm">
+              <span className="flex items-center gap-1.5 text-xs tabular-nums text-gray-500 dark:text-gray-500 sm:text-sm">
                 {experience.period}
+                {experience.endDate === null && <LiveDot />}
               </span>
 
               <button
