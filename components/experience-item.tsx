@@ -140,20 +140,24 @@ export function ExperienceItem({
                   </li>
                 ))}
               </ul>
-
-              {/* Same pill treatment as the project tags. */}
-              <ul className="mt-5 flex flex-wrap gap-1.5">
-                {experience.technologies.map((tech) => (
-                  <li
-                    key={tech}
-                    className="rounded-md bg-gray-100 px-2 py-1 text-xs font-medium text-gray-700 dark:bg-gray-800 dark:text-gray-300"
-                  >
-                    {tech}
-                  </li>
-                ))}
-              </ul>
             </div>
           </div>
+
+          {/*
+            Kept in its original position, below the collapsible description,
+            but pulled outside the collapse itself so it stays visible
+            regardless of whether "details" is open or closed.
+          */}
+          <ul className="mt-4 flex flex-wrap gap-1.5">
+            {experience.technologies.map((tech) => (
+              <li
+                key={tech}
+                className="rounded-md bg-gray-100 px-2 py-1 text-xs font-medium text-gray-700 dark:bg-gray-800 dark:text-gray-300"
+              >
+                {tech}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </Reveal>
