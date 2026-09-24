@@ -20,7 +20,10 @@ export default function RootLayout({
         bandwidth on off-screen images instead of the font and JS the hero
         actually needs first.
       */}
-      <body className={`${GeistSans.variable} antialiased bg-white dark:bg-black text-black dark:text-white`}>
+      <body
+        className={`${GeistSans.variable} antialiased bg-white dark:bg-black text-black dark:text-white`}
+        suppressHydrationWarning
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
